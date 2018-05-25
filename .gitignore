@@ -1,4 +1,4 @@
 lib/node_modules
 .DS_Store
 dist
-db/apiKeys.json
+db/apiKey.json
