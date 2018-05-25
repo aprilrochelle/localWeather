@@ -1,1 +1,3 @@
-// write some stuff here
+const apiKey = require('./apiKey');
+
+apiKey.retrieveKey();
