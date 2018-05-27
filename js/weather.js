@@ -1,3 +1,5 @@
+const dom = require('./dom');
+
 let weatherKey = '';
 
 const setKey = (key) => {
@@ -16,7 +18,17 @@ const searchWeather = (zip) => {
   });
 };
 
+const showWeather = (zip) => {
+  searchWeather(zip)
+    .then((result) => {
+      dom.currentWeather(result);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+};
+
 module.exports = {
   setKey,
-  searchWeather,
+  showWeather,
 };
