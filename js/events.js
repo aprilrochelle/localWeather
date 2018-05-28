@@ -18,10 +18,18 @@ const validationEvents = () => {
   $('#zip-btn').click(checkZip);
 };
 
+const forecastEvents = () => {
+  const zipCode = $('#user-zip').val();
+  $('#day5').on('click', () => {
+    weather.showForecast(zipCode);
+  });
+};
+
 const initializer = () => {
   validationEvents();
 };
 
 module.exports = {
   initializer,
+  forecastEvents,
 };

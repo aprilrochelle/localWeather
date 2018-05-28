@@ -1,3 +1,5 @@
+const events = require('./events');
+
 const currentWeather = (wxObject) => {
   let wxString = '';
   wxString += `<div class="jumbotron col-md-10 col-md-offset-1">`;
@@ -19,16 +21,27 @@ const currentWeather = (wxObject) => {
   wxString +=     `</div>`;
   wxString +=   `</div>`;
   wxString +=   `<div class="row text-center">`;
-  wxString +=     `<button id="5-day" class="btn btn-primary btn-md">View 5 Day Forecast</button>`;
+  wxString +=     `<button id="day5" class="btn btn-primary btn-md">View 5 Day Forecast</button>`;
   wxString +=   `</div>`;
   wxString += `</div>`;
   printCurrentWx(wxString);
 };
 
+const forecast5 = (wxObj) => {
+  const wxString = '';
+  printForecast5(wxString);
+};
+
 const printCurrentWx = (string) => {
   $('#wxBox').html(string);
+  events.forecastEvents();
+};
+
+const printForecast5 = (string) => {
+  $('#forecast').html(string);
 };
 
 module.exports = {
   currentWeather,
+  forecast5,
 };

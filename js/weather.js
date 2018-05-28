@@ -6,7 +6,7 @@ const setKey = (key) => {
   weatherKey = key;
 };
 
-const searchWeather = (zip) => {
+const getCurrentWeather = (zip) => {
   return new Promise((resolve, reject) => {
     $.ajax(`http://api.openweathermap.org/data/2.5/weather?q=${zip},us&appid=${weatherKey}&units=imperial`)
       .done((result) => {
@@ -18,10 +18,32 @@ const searchWeather = (zip) => {
   });
 };
 
+const getWxForecast = (zip) => {
+  return new Promise((resolve, reject) => {
+    $.ajax(`api.openweathermap.org/data/2.5/forecast?zip=${zip},us&appid=${weatherKey}&units=imperial`)
+      .done((result) => {
+        resolve(result);
+      })
+      .fail((err) => {
+        reject(err);
+      });
+  });
+};
+
 const showWeather = (zip) => {
-  searchWeather(zip)
-    .then((result) => {
-      dom.currentWeather(result);
+  getCurrentWeather(zip)
+    .then((results) => {
+      dom.currentWeather(results);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+};
+
+const showForecast = (zip) => {
+  getWxForecast(zip)
+    .then((results) => {
+      dom.forecast5(results);
     })
     .catch((err) => {
       console.error(err);
@@ -31,4 +53,5 @@ const showWeather = (zip) => {
 module.exports = {
   setKey,
   showWeather,
+  showForecast,
 };
