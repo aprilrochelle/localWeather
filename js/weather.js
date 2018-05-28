@@ -20,7 +20,7 @@ const getCurrentWeather = (zip) => {
 
 const getWxForecast = (zip) => {
   return new Promise((resolve, reject) => {
-    $.ajax(`api.openweathermap.org/data/2.5/forecast?zip=${zip},us&appid=${weatherKey}&units=imperial`)
+    $.ajax(`http://api.openweathermap.org/data/2.5/forecast?zip=${zip},us&appid=${weatherKey}&units=imperial`)
       .done((result) => {
         resolve(result);
       })
