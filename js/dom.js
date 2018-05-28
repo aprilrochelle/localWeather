@@ -1,5 +1,3 @@
-const events = require('./events');
-
 const currentWeather = (wxObject) => {
   let wxString = '';
   wxString += `<div class="jumbotron col-md-10 col-md-offset-1">`;
@@ -8,7 +6,7 @@ const currentWeather = (wxObject) => {
   wxString +=       `<h1>${wxObject.name}</h1>`;
   wxString +=       `</div>`;
   wxString +=     `<div class="col-md-2">`;
-  wxString +=       `<p>Temperature: <span><h3>${wxObject.main.temp.toFixed(0)}</h3></span></p>`;
+  wxString +=       `<p>Temperature: <span><h3>${wxObject.main.temp.toFixed(0)} F</h3></span></p>`;
   wxString +=     `</div>`;
   wxString +=     `<div class="col-md-2">`;
   wxString +=       `<p>Conditions: <span><h3>${wxObject.weather[0].main}</h3></span></p>`;
@@ -28,13 +26,30 @@ const currentWeather = (wxObject) => {
 };
 
 const forecast5 = (wxObj) => {
-  const wxString = '';
+  let wxString = '';
+  wxString += `<div class="container-fluid">`;
+  wxString +=   `<div class="row text-center">`;
+  wxString +=     `<div class="col-md-10 col-md-offset-1 city-container">`;
+  wxString +=       `<h2>${wxObj.city.name}'s 5 Day Forecast</h2>`;
+  wxString +=     `</div>`;
+  wxString +=     `<div class="row text-center">`;
+  wxString +=       `<div class="col-md-10 col-md-offset-1">`;
+  wxObj.list.forEach((wx) => {
+    if (wx.dt_txt.includes('15:00:00')) {
+      wxString += `<div class="col-md-2 wx-card">`;
+      wxString +=   `<p>Temperature: <span><h4>${wx.main.temp.toFixed(0)}</h4></span></p>`;
+      wxString += `</div>`;
+    }
+  });
+  wxString += `</div>`;
+  wxString += `</div>`;
+  wxString += `</div>`;
+  wxString += `</div>`;
   printForecast5(wxString);
 };
 
 const printCurrentWx = (string) => {
   $('#wxBox').html(string);
-  events.forecastEvents();
 };
 
 const printForecast5 = (string) => {

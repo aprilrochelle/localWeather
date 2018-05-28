@@ -1,5 +1,3 @@
-const dom = require('./dom');
-
 let weatherKey = '';
 
 const setKey = (key) => {
@@ -30,28 +28,8 @@ const getWxForecast = (zip) => {
   });
 };
 
-const showWeather = (zip) => {
-  getCurrentWeather(zip)
-    .then((results) => {
-      dom.currentWeather(results);
-    })
-    .catch((err) => {
-      console.error(err);
-    });
-};
-
-const showForecast = (zip) => {
-  getWxForecast(zip)
-    .then((results) => {
-      dom.forecast5(results);
-    })
-    .catch((err) => {
-      console.error(err);
-    });
-};
-
 module.exports = {
   setKey,
-  showWeather,
-  showForecast,
+  getCurrentWeather,
+  getWxForecast,
 };

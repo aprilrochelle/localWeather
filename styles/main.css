@@ -1,3 +1,15 @@
 body {
   background-color: lightskyblue;
 }
+
+.city-container {
+  margin-bottom: 10px;
+  border-bottom: solid 4px rgb(0, 74, 139);
+}
+
+.wx-card {
+  background-color: #eee;
+  border-radius: 5px;
+  margin: 0 1%;
+  width: 18%;
+}
