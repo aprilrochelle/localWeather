@@ -1,12 +1,10 @@
-const dom = require('./dom');
-
 let weatherKey = '';
 
 const setKey = (key) => {
   weatherKey = key;
 };
 
-const searchWeather = (zip) => {
+const getCurrentWeather = (zip) => {
   return new Promise((resolve, reject) => {
     $.ajax(`http://api.openweathermap.org/data/2.5/weather?q=${zip},us&appid=${weatherKey}&units=imperial`)
       .done((result) => {
@@ -18,17 +16,20 @@ const searchWeather = (zip) => {
   });
 };
 
-const showWeather = (zip) => {
-  searchWeather(zip)
-    .then((result) => {
-      dom.currentWeather(result);
-    })
-    .catch((err) => {
-      console.error(err);
-    });
+const getWxForecast = (zip) => {
+  return new Promise((resolve, reject) => {
+    $.ajax(`http://api.openweathermap.org/data/2.5/forecast?zip=${zip},us&appid=${weatherKey}&units=imperial`)
+      .done((result) => {
+        resolve(result);
+      })
+      .fail((err) => {
+        reject(err);
+      });
+  });
 };
 
 module.exports = {
   setKey,
-  showWeather,
+  getCurrentWeather,
+  getWxForecast,
 };
