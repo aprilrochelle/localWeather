@@ -6,7 +6,7 @@ const currentWeather = (wxObject) => {
   wxString +=       `<h1>${wxObject.name}</h1>`;
   wxString +=       `</div>`;
   wxString +=     `<div class="col-md-2">`;
-  wxString +=       `<p>Temperature: <span><h3>${wxObject.main.temp.toFixed(0)} F</h3></span></p>`;
+  wxString +=       `<p>Temperature: <span><h3>${wxObject.main.temp.toFixed(0)}&deg;F</h3></span></p>`;
   wxString +=     `</div>`;
   wxString +=     `<div class="col-md-2">`;
   wxString +=       `<p>Conditions: <span><h3>${wxObject.weather[0].main}</h3></span></p>`;
@@ -37,7 +37,13 @@ const forecast5 = (wxObj) => {
   wxObj.list.forEach((wx) => {
     if (wx.dt_txt.includes('15:00:00')) {
       wxString += `<div class="col-md-2 wx-card">`;
-      wxString +=   `<p>Temperature: <span><h4>${wx.main.temp.toFixed(0)}</h4></span></p>`;
+      wxString +=   `<h4>${wx.dt_txt}</h4>`;
+      wxString +=   `<ul class="list-group">`;
+      wxString +=     `<li class="list-group-item">${wx.main.temp.toFixed(0)}&deg;F</li>`;
+      wxString +=     `<li class="list-group-item">${wx.weather[0].main}</li>`;
+      wxString +=     `<li class="list-group-item">Pressure: ${wx.main.pressure}</li>`;
+      wxString +=     `<li class="list-group-item">Wind Speed: ${wx.wind.speed}MPH</li>`;
+      wxString +=   `</ul>`;
       wxString += `</div>`;
     }
   });
