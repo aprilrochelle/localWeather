@@ -19,7 +19,10 @@ const currentWeather = (wxObject) => {
   wxString +=     `</div>`;
   wxString +=   `</div>`;
   wxString +=   `<div class="row text-center">`;
-  wxString +=     `<button id="day5" class="btn btn-primary btn-md">View 5 Day Forecast</button>`;
+  wxString +=     `<div class="btn-group btn-group-md" role="group">`;
+  wxString +=       `<button id="day3" class="btn btn-success btn-md">3 Day Forecast</button>`;
+  wxString +=       `<button id="day5" class="btn btn-primary btn-md">5 Day Forecast</button>`;
+  wxString +=     `</div>`;
   wxString +=   `</div>`;
   wxString += `</div>`;
   printCurrentWx(wxString);
@@ -36,7 +39,7 @@ const forecast5 = (wxObj) => {
   wxString +=       `<div class="col-md-10 col-md-offset-1">`;
   wxObj.list.forEach((wx) => {
     if (wx.dt_txt.includes('15:00:00')) {
-      wxString += `<div class="col-md-2 wx-card">`;
+      wxString += `<div class="col-md-2 wx-card-5">`;
       wxString +=   `<h4>${wx.dt_txt}</h4>`;
       wxString +=   `<ul class="list-group">`;
       wxString +=     `<li class="list-group-item">${wx.main.temp.toFixed(0)}&deg;F</li>`;
@@ -54,6 +57,33 @@ const forecast5 = (wxObj) => {
   printForecast5(wxString);
 };
 
+const forecast3 = (wxObj) => {
+  let wxString = '';
+  wxString += `<div class="container-fluid">`;
+  wxString +=   `<div class="row text-center">`;
+  wxString +=     `<div class="col-md-10 col-md-offset-1 city-container">`;
+  wxString +=       `<h2>${wxObj.city.name}'s 3 Day Forecast</h2>`;
+  wxString +=     `</div>`;
+  wxString +=     `<div class="row text-center">`;
+  wxString +=       `<div class="col-md-10 col-md-offset-1">`;
+  for (let i = 5; i < 22; i += 8) {
+    wxString += `<div class="col-md-4 wx-card">`;
+    wxString +=   `<h4>${wxObj.list[i].dt_txt}</h4>`;
+    wxString +=   `<ul class="list-group">`;
+    wxString +=     `<li class="list-group-item">${wxObj.list[i].main.temp.toFixed(0)}&deg;F</li>`;
+    wxString +=     `<li class="list-group-item">${wxObj.list[i].weather[0].main}</li>`;
+    wxString +=     `<li class="list-group-item">Pressure: ${wxObj.list[i].main.pressure}</li>`;
+    wxString +=     `<li class="list-group-item">Wind Speed: ${wxObj.list[i].wind.speed}MPH</li>`;
+    wxString +=   `</ul>`;
+    wxString += `</div>`;
+  }
+  wxString += `</div>`;
+  wxString += `</div>`;
+  wxString += `</div>`;
+  wxString += `</div>`;
+  printForecast3(wxString);
+};
+
 const printCurrentWx = (string) => {
   $('#wxBox').html(string);
 };
@@ -62,7 +92,12 @@ const printForecast5 = (string) => {
   $('#forecast').html(string);
 };
 
+const printForecast3 = (string) => {
+  $('#forecast').html(string);
+};
+
 module.exports = {
   currentWeather,
   forecast5,
+  forecast3,
 };

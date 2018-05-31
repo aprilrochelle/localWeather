@@ -7,9 +7,16 @@ body {
   border-bottom: solid 2px rgb(188, 224, 255);
 }
 
-.wx-card {
+.wx-card-5 {
   background-color: #eee;
   border-radius: 5px;
   margin: 0 1%;
   width: 18%;
+}
+
+.wx-card {
+  background-color: #eee;
+  border-radius: 5px;
+  width: 29%;
+  margin: 0 2.1%;
 }

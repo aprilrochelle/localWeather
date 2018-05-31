@@ -38,6 +38,15 @@ const forecastEvents = () => {
         console.error(err);
       });
   });
+  $('#day3').on('click', () => {
+    weather.getWxForecast(zip)
+      .then((results) => {
+        dom.forecast3(results);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  });
 };
 
 const initializer = () => {
