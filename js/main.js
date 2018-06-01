@@ -1,5 +1,5 @@
 const events = require('./events');
-const apiKey = require('./apiKey');
+const apiKeys = require('./apiKeys');
 
-apiKey.retrieveKey();
+apiKeys.retrieveKeys();
 events.initializer();

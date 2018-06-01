@@ -1,8 +1,8 @@
 const weather = require('./weather');
 
-const apiKey = () => {
+const apiKeys = () => {
   return new Promise((resolve, reject) => {
-    $.ajax('./db/apiKey.json')
+    $.ajax('./db/apiKeys.json')
       .done((data) => {
         resolve(data.apiKeys);
       })
@@ -12,10 +12,11 @@ const apiKey = () => {
   });
 };
 
-const retrieveKey = () => {
-  apiKey()
+const retrieveKeys = () => {
+  apiKeys()
     .then((results) => {
       weather.setKey(results.openWeather.apiKey);
+      firebase.initializeApp(results.firebase);
     })
     .catch((err) => {
       console.error('no keys: ', err);
@@ -23,5 +24,5 @@ const retrieveKey = () => {
 };
 
 module.exports = {
-  retrieveKey,
+  retrieveKeys,
 };
