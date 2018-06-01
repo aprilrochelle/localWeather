@@ -1,12 +1,13 @@
 const weather = require('./weather');
 const dom = require('./dom');
+const firebaseApi = require('./firebaseApi');
 
 const checkZip = () => {
   const userZip = $('#user-zip').val();
   if (userZip.length === 5 && $.isNumeric(userZip)) {
     weather.getCurrentWeather(userZip)
       .then((results) => {
-        dom.currentWeather(results);
+        dom.currentWeather(results, 'wxBox');
         $('#forecast').html('');
         forecastEvents();
       })
@@ -32,7 +33,7 @@ const forecastEvents = () => {
   $('#day5').on('click', () => {
     weather.getWxForecast(zip)
       .then((results) => {
-        dom.forecast5(results);
+        dom.forecast5(results, 'forecast');
       })
       .catch((err) => {
         console.error(err);
@@ -41,7 +42,7 @@ const forecastEvents = () => {
   $('#day3').on('click', () => {
     weather.getWxForecast(zip)
       .then((results) => {
-        dom.forecast3(results);
+        dom.forecast3(results, 'forecast');
       })
       .catch((err) => {
         console.error(err);
@@ -49,8 +50,25 @@ const forecastEvents = () => {
   });
 };
 
+const saveWeatherEvent = () => {
+  $(document).on('click', '.saveWx', (e) => {
+    const weatherObjToAdd = $(e.target).closest('.weather');
+    const weatherObj = {
+      city: weatherObjToAdd.find('.cityName').text(),
+      date: weatherObjToAdd.find('.date-time').text(),
+      temperature: weatherObjToAdd.find('.temp').text(),
+      conditions: weatherObjToAdd.find('.conditions').text(),
+      pressure: weatherObjToAdd.find('.pressure').text(),
+      windSpeed: weatherObjToAdd.find('.wind').text(),
+      isScary: false,
+    };
+    firebaseApi.saveWeatherForecast(weatherObj);
+  });
+};
+
 const initializer = () => {
   validationEvents();
+  saveWeatherEvent();
 };
 
 module.exports = {
