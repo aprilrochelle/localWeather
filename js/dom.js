@@ -18,6 +18,11 @@ const currentWeather = (wxObject) => {
   wxString +=       `<p>Wind Speed: <span><h3>${wxObject.wind.speed} mph</h3></span></p>`;
   wxString +=     `</div>`;
   wxString +=   `</div>`;
+  wxString +=   `<div class="row text-center saveCurrentRow">`;
+  wxString +=     `<button type="button" class="saveWx btn btn-warning btn-sm">
+  <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span> Save
+</button>`;
+  wxString +=   `</div>`;
   wxString +=   `<div class="row text-center">`;
   wxString +=     `<div class="btn-group btn-group-md" role="group">`;
   wxString +=       `<button id="day3" class="btn btn-success btn-md">3 Day Forecast</button>`;

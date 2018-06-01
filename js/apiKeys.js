@@ -2,7 +2,7 @@ const weather = require('./weather');
 
 const apiKeys = () => {
   return new Promise((resolve, reject) => {
-    $.ajax('./db/apiKeys.json')
+    $.ajax('./db/apiKey.json')
       .done((data) => {
         resolve(data.apiKeys);
       })
