@@ -1,9 +1,12 @@
+const moment = require('../lib/node_modules/moment/moment.js');
+
 const currentWeather = (wxObject, whereToPrint) => {
   let wxString = '';
   wxString += `<div class="jumbotron col-md-10 col-md-offset-1 weather">`;
   wxString +=   `<div class="row">`;
   wxString +=     `<div class="col-md-4 text-center">`;
   wxString +=       `<h1 class="cityName">${wxObject.name}</h1>`;
+  wxString +=       `<h4 class="date-time">${moment().format('MMM Do YY')}</h4>`;
   wxString +=       `</div>`;
   wxString +=     `<div class="col-md-2">`;
   wxString +=       `<p>Temperature: <span><h3 class="temp">${wxObject.main.temp.toFixed(0)}&deg;F</h3></span></p>`;
@@ -43,12 +46,13 @@ const forecast5 = (wxObj, whereToPrint) => {
   wxString +=     `<div class="row text-center">`;
   wxString +=       `<div class="col-md-10 col-md-offset-1">`;
   wxObj.list.forEach((wx) => {
+    console.log(wx.dt, typeof wx.dt, moment(wx.dt).local());
     if (wx.dt_txt.includes('15:00:00')) {
       wxString += `<div class="col-md-2 wx-card-5 weather">`;
       wxString +=   `<h4 class="cityName">${wxObj.city.name}</h4>`;
-      wxString +=   `<h4 class="date-time">${wx.dt_txt}</h4>`;
+      wxString +=   `<h4 class="date-time">${moment(wx.dt_txt).format('MMM Do YY')}</h4>`;
       wxString +=   `<ul class="list-group">`;
-      wxString +=     `<li class="list-group-item><span class="temp">${wx.main.temp.toFixed(0)}&deg;F</span></li>`;
+      wxString +=     `<li class="list-group-item"><span class="temp">${wx.main.temp.toFixed(0)}&deg;F</span></li>`;
       wxString +=     `<li class="list-group-item"><span class="conditions">${wx.weather[0].main}</span></li>`;
       wxString +=     `<li class="list-group-item">Pressure: <span class="pressure">${wx.main.pressure}</span></li>`;
       wxString +=     `<li class="list-group-item">Wind Speed: <span class="wind">${wx.wind.speed} mph</li>`;
