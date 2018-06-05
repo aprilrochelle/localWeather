@@ -6,7 +6,7 @@ const currentWeather = (wxObject, whereToPrint) => {
   wxString +=   `<div class="row">`;
   wxString +=     `<div class="col-md-4 text-center">`;
   wxString +=       `<h1 class="cityName">${wxObject.name}</h1>`;
-  wxString +=       `<h4 class="date-time">${moment().format('MMMM Do YYYY')}</h4>`;
+  wxString +=       `<h4 class="date-time">${moment().format('MMMM Do YYYY, hh:mm:ss a')}</h4>`;
   wxString +=       `</div>`;
   wxString +=     `<div class="col-md-2">`;
   wxString +=       `<p>Temperature: <span><h3 class="temp">${wxObject.main.temp.toFixed(0)}&deg;F</h3></span></p>`;
@@ -50,7 +50,7 @@ const forecast5 = (wxObj, whereToPrint) => {
     if (wx.dt_txt.includes('15:00:00')) {
       wxString += `<div class="col-md-2 wx-card-5 weather">`;
       wxString +=   `<h4 class="cityName">${wxObj.city.name}</h4>`;
-      wxString +=   `<h4 class="date-time">${moment(wx.dt_txt).format('MMMM Do YYYY')}</h4>`;
+      wxString +=   `<h4 class="date-time">${moment(wx.dt_txt).format('MMMM Do YYYY, hh:mm:ss a')}</h4>`;
       wxString +=   `<ul class="list-group">`;
       wxString +=     `<li class="list-group-item"><span class="temp">${wx.main.temp.toFixed(0)}&deg;F</span></li>`;
       wxString +=     `<li class="list-group-item"><span class="conditions">${wx.weather[0].main}</span></li>`;
@@ -82,7 +82,7 @@ const forecast3 = (wxObj, whereToPrint) => {
   for (let i = 5; i < 22; i += 8) {
     wxString += `<div class="col-md-4 wx-card weather">`;
     wxString +=   `<h4 class="cityName">${wxObj.city.name}</h4>`;
-    wxString +=   `<h4 class="date-time">${moment(wxObj.list[i].dt_txt).format('MMMM Do YYYY')}</h4>`;
+    wxString +=   `<h4 class="date-time">${moment(wxObj.list[i].dt_txt).format('MMMM Do YYYY, hh:mm:ss a')}</h4>`;
     wxString +=   `<ul class="list-group">`;
     wxString +=     `<li class="list-group-item"><span class="temp">${wxObj.list[i].main.temp.toFixed(0)}&deg;F</span></li>`;
     wxString +=     `<li class="list-group-item"><span class="conditions">${wxObj.list[i].weather[0].main}</span></li>`;
@@ -109,7 +109,7 @@ const savedWxForecasts = (wxArray, whereToPrint) => {
   wxArray.forEach((wx) => {
     wxString += `<div class="col-md-4 wx-card weather">`;
     wxString +=   `<h4 class="cityName">${wx.city}</h4>`;
-    wxString +=   `<h4 class="date-time">${moment(wx.date).format('MMMM Do YYYY')}</h4>`;
+    wxString +=   `<h4 class="date-time">${wx.date}</h4>`;
     wxString +=   `<ul class="list-group">`;
     wxString +=     `<li class="list-group-item"><span class="temp">${wx.temperature}</span></li>`;
     wxString +=     `<li class="list-group-item"><span class="conditions">${wx.conditions}</span></li>`;
