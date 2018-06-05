@@ -20,7 +20,30 @@ const saveWeatherForecast = (wxObj) => {
   });
 };
 
+const getSavedWeather = () => {
+  return new Promise((resolve, reject) => {
+    const savedWeatherArray = [];
+    $.ajax({
+      method: 'GET',
+      url: `${firebaseConfig.databaseURL}/weather.json`,
+    })
+      .done((allWeatherObj) => {
+        if (allWeatherObj !== null) {
+          Object.keys(allWeatherObj).forEach((uniqueKey) => {
+            allWeatherObj[uniqueKey].id = uniqueKey;
+            savedWeatherArray.push(allWeatherObj[uniqueKey]);
+          });
+        }
+        resolve(savedWeatherArray);
+      })
+      .fail((error) => {
+        reject(error);
+      });
+  });
+};
+
 module.exports = {
   saveWeatherForecast,
   setConfig,
+  getSavedWeather,
 };

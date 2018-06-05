@@ -1,6 +1,6 @@
 const weather = require('./weather');
 const dom = require('./dom');
-const firebaseApi = require('./firebaseApi');
+const {saveWeatherForecast, getSavedWeather,} = require('./firebaseApi');
 
 const checkZip = () => {
   const userZip = $('#user-zip').val();
@@ -9,6 +9,8 @@ const checkZip = () => {
       .then((results) => {
         dom.currentWeather(results, 'wxBox');
         $('#forecast').html('');
+        $('#getForecasts').removeClass('hide');
+        $('#savedForecasts').addClass('hide');
         forecastEvents();
       })
       .catch((err) => {
@@ -62,7 +64,21 @@ const saveWeatherEvent = () => {
       windSpeed: weatherObjToAdd.find('.wind').text(),
       isScary: false,
     };
-    firebaseApi.saveWeatherForecast(weatherObj);
+    saveWeatherForecast(weatherObj);
+  });
+};
+
+const showSavedWeather = () => {
+  $('#saved-link').click(() => {
+    getSavedWeather()
+      .then((results) => {
+        dom.savedWxForecasts(results, 'savedList');
+        $('#getForecasts').addClass('hide');
+        $('#savedForecasts').removeClass('hide');
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   });
 };
 
@@ -74,4 +90,5 @@ const initializer = () => {
 module.exports = {
   initializer,
   forecastEvents,
+  showSavedWeather,
 };
