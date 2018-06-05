@@ -1,6 +1,6 @@
 const weather = require('./weather');
 const firebaseApi = require('./firebaseApi');
-const {showSavedWeather,} = require('./events');
+const {showSavedWeatherEvent, deleteSavedWeather,} = require('./events');
 
 const apiKeys = () => {
   return new Promise((resolve, reject) => {
@@ -20,7 +20,8 @@ const retrieveKeys = () => {
       weather.setKey(results.openWeather.apiKey);
       firebaseApi.setConfig(results.firebase);
       firebase.initializeApp(results.firebase);
-      showSavedWeather();
+      showSavedWeatherEvent();
+      deleteSavedWeather();
     })
     .catch((err) => {
       console.error('no keys: ', err);

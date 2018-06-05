@@ -46,7 +46,6 @@ const forecast5 = (wxObj, whereToPrint) => {
   wxString +=     `<div class="row text-center">`;
   wxString +=       `<div class="col-md-10 col-md-offset-1">`;
   wxObj.list.forEach((wx) => {
-    console.log(wx.dt, typeof wx.dt, moment(wx.dt).local());
     if (wx.dt_txt.includes('15:00:00')) {
       wxString += `<div class="col-md-2 wx-card-5 weather">`;
       wxString +=   `<h4 class="cityName">${wxObj.city.name}</h4>`;
@@ -107,7 +106,7 @@ const savedWxForecasts = (wxArray, whereToPrint) => {
   wxString +=   `<div class="row text-center">`;
   wxString +=     `<div class="col-md-10 col-md-offset-1">`;
   wxArray.forEach((wx) => {
-    wxString += `<div class="col-md-4 wx-card weather">`;
+    wxString += `<div class="col-md-4 wx-card weather" data-firebase-id="${wx.id}">`;
     wxString +=   `<h4 class="cityName">${wx.city}</h4>`;
     wxString +=   `<h4 class="date-time">${wx.date}</h4>`;
     wxString +=   `<ul class="list-group">`;
@@ -116,7 +115,7 @@ const savedWxForecasts = (wxArray, whereToPrint) => {
     wxString +=     `<li class="list-group-item">Pressure: <span class="pressure">${wx.pressure}</span></li>`;
     wxString +=     `<li class="list-group-item">Wind Speed: <span class="wind">${wx.windSpeed}</li>`;
     wxString +=   `</ul>`;
-    // wxString +=   `<button type="button" class="saveWx btn btn-warning btn-sm"><span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>Save</button>`;
+    wxString +=   `<button type="button" class="deleteWx btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Delete</button>`;
     wxString += `</div>`;
   });
   wxString += `</div>`;
