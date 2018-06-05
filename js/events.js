@@ -1,6 +1,6 @@
 const weather = require('./weather');
 const dom = require('./dom');
-const {saveWeatherForecast, getSavedWeather,} = require('./firebaseApi');
+const {saveWeatherForecast, getSavedWeather, deleteWeather,} = require('./firebaseApi');
 
 const checkZip = () => {
   const userZip = $('#user-zip').val();
@@ -69,12 +69,29 @@ const saveWeatherEvent = () => {
 };
 
 const showSavedWeather = () => {
+  getSavedWeather()
+    .then((results) => {
+      dom.savedWxForecasts(results, 'savedList');
+      $('#getForecasts').addClass('hide');
+      $('#savedForecasts').removeClass('hide');
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
+
+const showSavedWeatherEvent = () => {
   $('#saved-link').click(() => {
-    getSavedWeather()
-      .then((results) => {
-        dom.savedWxForecasts(results, 'savedList');
-        $('#getForecasts').addClass('hide');
-        $('#savedForecasts').removeClass('hide');
+    showSavedWeather();
+  });
+};
+
+const deleteSavedWeather = () => {
+  $(document).on('click', '.deleteWx', (e) => {
+    const wxToDelete = $(e.target).closest('.weather').data('firebaseId');
+    deleteWeather(wxToDelete)
+      .then(() => {
+        showSavedWeather();
       })
       .catch((error) => {
         console.error(error);
@@ -90,5 +107,6 @@ const initializer = () => {
 module.exports = {
   initializer,
   forecastEvents,
-  showSavedWeather,
+  showSavedWeatherEvent,
+  deleteSavedWeather,
 };
