@@ -1,7 +1,7 @@
 # Local Weather
 
 ## Description
-Used API calls to retrieve data used to code a web app designed to display and forecast weather conditions by zip code. Use of the following technologies:
+Used API calls to retrieve data used to code a web app designed to display and forecast weather conditions by zip code. Created, read, updated and deleted data in Firebase database. Use of the following technologies:
  - HTML
  - CSS
  - JavaScript
@@ -10,19 +10,23 @@ Used API calls to retrieve data used to code a web app designed to display and f
  - Bootstrap 3
  - JQuery
  - AJAX
+ - Firebase
 
 ## Screenshot
 Home Screen
-![Webpage](https://raw.githubusercontent.com/aprilrochelle/localWeather/master/screens/weather1.png)
+![Webpage](https://raw.githubusercontent.com/aprilrochelle/localWeather/master/screens/wx2-1.png)
 
 Current Weather by Zip
-![Webpage](https://raw.githubusercontent.com/aprilrochelle/localWeather/master/screens/weather2.png)
+![Webpage](https://raw.githubusercontent.com/aprilrochelle/localWeather/master/screens/wx2-2.png)
 
 3 Day Forecast
-![Webpage](https://raw.githubusercontent.com/aprilrochelle/localWeather/master/screens/weather3.png)
+![Webpage](https://raw.githubusercontent.com/aprilrochelle/localWeather/master/screens/wx2-3.png)
 
 5 Day Forecast
-![Webpage](https://raw.githubusercontent.com/aprilrochelle/localWeather/master/screens/weather4.png)
+![Webpage](https://raw.githubusercontent.com/aprilrochelle/localWeather/master/screens/wx2-4.png)
+
+Saved Weather Forecasts
+![Webpage](https://raw.githubusercontent.com/aprilrochelle/localWeather/master/screens/wx2-5.png)
 
 ## How to Run
  1. Clone down this repo, and cd into project
