@@ -57,9 +57,26 @@ const deleteWeather = (weatherId) => {
   });
 };
 
+const changeWeatherToScary = (updatedWx, wxId) => {
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      method: 'PUT',
+      url: `${firebaseConfig.databaseURL}/weather/${wxId}.json`,
+      data: JSON.stringify(updatedWx),
+    })
+      .done((modifiedWx) => {
+        resolve(modifiedWx);
+      })
+      .fail((error) => {
+        reject(error);
+      });
+  });
+};
+
 module.exports = {
   saveWeatherForecast,
   setConfig,
   getSavedWeather,
   deleteWeather,
+  changeWeatherToScary,
 };

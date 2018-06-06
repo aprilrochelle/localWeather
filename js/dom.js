@@ -106,7 +106,11 @@ const savedWxForecasts = (wxArray, whereToPrint) => {
   wxString +=   `<div class="row text-center">`;
   wxString +=     `<div class="col-md-10 col-md-offset-1">`;
   wxArray.forEach((wx) => {
-    wxString += `<div class="col-md-4 wx-card weather" data-firebase-id="${wx.id}">`;
+    if (wx.isScary) {
+      wxString += `<div class="col-md-4 wx-card weather scary" data-firebase-id="${wx.id}">`;
+    } else if (!wx.isScary) {
+      wxString += `<div class="col-md-4 wx-card weather" data-firebase-id="${wx.id}">`;
+    }
     wxString +=   `<h4 class="cityName">${wx.city}</h4>`;
     wxString +=   `<h4 class="date-time">${wx.date}</h4>`;
     wxString +=   `<ul class="list-group">`;
@@ -115,7 +119,10 @@ const savedWxForecasts = (wxArray, whereToPrint) => {
     wxString +=     `<li class="list-group-item">Pressure: <span class="pressure">${wx.pressure}</span></li>`;
     wxString +=     `<li class="list-group-item">Wind Speed: <span class="wind">${wx.windSpeed}</li>`;
     wxString +=   `</ul>`;
-    wxString +=   `<button type="button" class="deleteWx btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Delete</button>`;
+    wxString +=   `<div class="btn-group" role="group">`;
+    wxString +=   `<button type="button" class="deleteWx btn btn-success btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete</button>`;
+    wxString +=   `<button type="button" class="scary btn btn-danger btn-sm"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Scary Weather</button>`;
+    wxString += `</div>`;
     wxString += `</div>`;
   });
   wxString += `</div>`;

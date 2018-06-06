@@ -1,6 +1,6 @@
 const weather = require('./weather');
 const dom = require('./dom');
-const {saveWeatherForecast, getSavedWeather, deleteWeather,} = require('./firebaseApi');
+const {saveWeatherForecast, getSavedWeather, deleteWeather, changeWeatherToScary,} = require('./firebaseApi');
 
 const checkZip = () => {
   const userZip = $('#user-zip').val();
@@ -87,7 +87,7 @@ const showSavedWeatherEvent = () => {
 };
 
 const deleteSavedWeather = () => {
-  $(document).on('click', '.deleteWx', (e) => {
+  $(document).on('click','.deleteWx', (e) => {
     const wxToDelete = $(e.target).closest('.weather').data('firebaseId');
     deleteWeather(wxToDelete)
       .then(() => {
@@ -95,6 +95,29 @@ const deleteSavedWeather = () => {
       })
       .catch((error) => {
         console.error(error);
+      });
+  });
+};
+
+const markScaryWeather = () => {
+  $(document).on('click', '.scary', (e) => {
+    const weatherToUpdateId = $(e.target).closest('.weather').data('firebaseId');
+    const updatedWeatherCard = $(e.target).closest('.weather');
+    const updatedWeather = {
+      city: updatedWeatherCard.find('.cityName').text(),
+      date: updatedWeatherCard.find('.date-time').text(),
+      temperature: updatedWeatherCard.find('.temp').text(),
+      conditions: updatedWeatherCard.find('.conditions').text(),
+      pressure: updatedWeatherCard.find('.pressure').text(),
+      windSpeed: updatedWeatherCard.find('.wind').text(),
+      isScary: true,
+    };
+    changeWeatherToScary(updatedWeather, weatherToUpdateId)
+      .then(() => {
+        showSavedWeather();
+      })
+      .catch((error) => {
+        console.error('error in updating weather', error);
       });
   });
 };
@@ -109,4 +132,5 @@ module.exports = {
   forecastEvents,
   showSavedWeatherEvent,
   deleteSavedWeather,
+  markScaryWeather,
 };
