@@ -2,7 +2,8 @@ body {
   background-color: lightskyblue;
 }
 
-.saveCurrentRow {
+.saveCurrentRow,
+.btn-group {
   margin-bottom: 7px;
 }
 
@@ -20,6 +21,13 @@ body {
 
 .wx-card {
   background-color: #eee;
+  border-radius: 5px;
+  width: 29%;
+  margin: 0 2.1% 2% 2.1%;
+}
+
+.wx-card + .scary {
+  background-color: rgb(255, 57, 57);
   border-radius: 5px;
   width: 29%;
   margin: 0 2.1% 2% 2.1%;
