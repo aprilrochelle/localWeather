@@ -7,6 +7,7 @@ const currentWeather = (wxObject, whereToPrint) => {
   wxString +=     `<div class="col-md-4 text-center">`;
   wxString +=       `<h1 class="cityName">${wxObject.name}</h1>`;
   wxString +=       `<h4 class="date-time">${moment().format('MMMM Do YYYY, hh:mm:ss a')}</h4>`;
+  wxString +=       `<img data-icon="${wxObject.weather[0].icon}"  src="http://openweathermap.org/img/w/${wxObject.weather[0].icon}.png">`;
   wxString +=       `</div>`;
   wxString +=     `<div class="col-md-2">`;
   wxString +=       `<p>Temperature: <span><h3 class="temp">${wxObject.main.temp.toFixed(0)}&deg;F</h3></span></p>`;
@@ -50,6 +51,7 @@ const forecast5 = (wxObj, whereToPrint) => {
       wxString += `<div class="col-md-2 wx-card-5 weather">`;
       wxString +=   `<h4 class="cityName">${wxObj.city.name}</h4>`;
       wxString +=   `<h4 class="date-time">${moment(wx.dt_txt).format('MMMM Do YYYY, hh:mm:ss a')}</h4>`;
+      wxString +=       `<img data-icon="${wx.weather[0].icon}" src="http://openweathermap.org/img/w/${wx.weather[0].icon}.png">`;
       wxString +=   `<ul class="list-group">`;
       wxString +=     `<li class="list-group-item"><span class="temp">${wx.main.temp.toFixed(0)}&deg;F</span></li>`;
       wxString +=     `<li class="list-group-item"><span class="conditions">${wx.weather[0].main}</span></li>`;
@@ -82,6 +84,7 @@ const forecast3 = (wxObj, whereToPrint) => {
     wxString += `<div class="col-md-4 wx-card weather">`;
     wxString +=   `<h4 class="cityName">${wxObj.city.name}</h4>`;
     wxString +=   `<h4 class="date-time">${moment(wxObj.list[i].dt_txt).format('MMMM Do YYYY, hh:mm:ss a')}</h4>`;
+    wxString +=       `<img data-icon="${wxObj.list[i].weather[0].icon}" src="http://openweathermap.org/img/w/${wxObj.list[i].weather[0].icon}.png">`;
     wxString +=   `<ul class="list-group">`;
     wxString +=     `<li class="list-group-item"><span class="temp">${wxObj.list[i].main.temp.toFixed(0)}&deg;F</span></li>`;
     wxString +=     `<li class="list-group-item"><span class="conditions">${wxObj.list[i].weather[0].main}</span></li>`;
@@ -113,6 +116,7 @@ const savedWxForecasts = (wxArray, whereToPrint) => {
     }
     wxString +=   `<h4 class="cityName">${wx.city}</h4>`;
     wxString +=   `<h4 class="date-time">${wx.date}</h4>`;
+    wxString +=   `<img data-icon="${wx.img}" src="http://openweathermap.org/img/w/${wx.img}.png">`;
     wxString +=   `<ul class="list-group">`;
     wxString +=     `<li class="list-group-item"><span class="temp">${wx.temperature}</span></li>`;
     wxString +=     `<li class="list-group-item"><span class="conditions">${wx.conditions}</span></li>`;
@@ -121,7 +125,7 @@ const savedWxForecasts = (wxArray, whereToPrint) => {
     wxString +=   `</ul>`;
     wxString +=   `<div class="btn-group" role="group">`;
     wxString +=   `<button type="button" class="deleteWx btn btn-success btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete</button>`;
-    wxString +=   `<button type="button" class="scary btn btn-danger btn-sm"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Scary Weather</button>`;
+    wxString +=   `<button type="button" class="scary-btn btn btn-danger btn-sm"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Scary Weather</button>`;
     wxString += `</div>`;
     wxString += `</div>`;
   });
