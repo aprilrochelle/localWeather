@@ -63,6 +63,7 @@ const saveWeatherEvent = () => {
       pressure: weatherObjToAdd.find('.pressure').text(),
       windSpeed: weatherObjToAdd.find('.wind').text(),
       isScary: false,
+      img: weatherObjToAdd.find('img').data('icon'),
     };
     saveWeatherForecast(weatherObj);
   });
@@ -100,7 +101,7 @@ const deleteSavedWeather = () => {
 };
 
 const markScaryWeather = () => {
-  $(document).on('click', '.scary', (e) => {
+  $(document).on('click', '.scary-btn', (e) => {
     const weatherToUpdateId = $(e.target).closest('.weather').data('firebaseId');
     const updatedWeatherCard = $(e.target).closest('.weather');
     const updatedWeather = {
@@ -111,6 +112,7 @@ const markScaryWeather = () => {
       pressure: updatedWeatherCard.find('.pressure').text(),
       windSpeed: updatedWeatherCard.find('.wind').text(),
       isScary: true,
+      img: updatedWeatherCard.find('img').data('icon'),
     };
     changeWeatherToScary(updatedWeather, weatherToUpdateId)
       .then(() => {

@@ -1,33 +1,42 @@
 body {
-  background-color: lightskyblue;
+  background: url('../img/weather.jpg');
+  background-size: cover;
+}
+
+.jumbotron {
+  background-color: rgb(238, 238, 238, .7);
+}
+
+.header {
+  color: #eee;
 }
 
 .saveCurrentRow,
-.btn-group {
+.btn-sm {
   margin-bottom: 7px;
 }
 
 .city-container {
   margin-bottom: 10px;
-  border-bottom: solid 2px rgb(188, 224, 255);
+  border-bottom: solid 2px #eee;
 }
 
 .wx-card-5 {
-  background-color: #eee;
+  background-color: rgb(238, 238, 238, .7);
   border-radius: 5px;
   margin: 0 1%;
   width: 18%;
 }
 
 .wx-card {
-  background-color: #eee;
+  background-color: rgb(238, 238, 238, .7);
   border-radius: 5px;
   width: 29%;
   margin: 0 2.1% 2% 2.1%;
 }
 
 .wx-card + .scary {
-  background-color: rgb(255, 57, 57);
+  background-color: rgb(255, 57, 57, .7);
   border-radius: 5px;
   width: 29%;
   margin: 0 2.1% 2% 2.1%;
