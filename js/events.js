@@ -124,15 +124,29 @@ const markScaryWeather = () => {
   });
 };
 
+const authorizationEvents = () => {
+  $('#register-btn').click(() => {
+    const email = $('#registerEmail').val();
+    const password = $('#registerPassword').val();
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+      .catch((error) => {
+        $('#register-error-msg').text(error.message);
+        $('#register-error').removeClass('hide');
+        console.error(error.message);
+      });
+  });
+};
+
 const initializer = () => {
   validationEvents();
   saveWeatherEvent();
+  showSavedWeatherEvent();
+  deleteSavedWeather();
+  markScaryWeather();
+  authorizationEvents();
 };
 
 module.exports = {
   initializer,
   forecastEvents,
-  showSavedWeatherEvent,
-  deleteSavedWeather,
-  markScaryWeather,
 };
