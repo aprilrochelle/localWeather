@@ -1,7 +1,12 @@
 let firebaseConfig = {};
+let uid = '';
 
 const setConfig = (fbconfig) => {
   firebaseConfig = fbconfig;
+};
+
+const setUid = (newUserId) => {
+  uid = newUserId;
 };
 
 const saveWeatherForecast = (wxObj) => {
@@ -76,6 +81,8 @@ const changeWeatherToScary = (updatedWx, wxId) => {
 module.exports = {
   saveWeatherForecast,
   setConfig,
+  setUid,
+  uid,
   getSavedWeather,
   deleteWeather,
   changeWeatherToScary,
