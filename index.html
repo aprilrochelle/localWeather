@@ -24,10 +24,11 @@
         </div>
         <div id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-left">
-            <li><a id="saved-link">Saved Forecasts</a></li>
+            <li><a class="hide" id="saved-link">Saved Forecasts</a></li>
+            <li><a id="auth-link">Sign In</a></li>
           </ul>
         </div>
-        <div class="navbar-form navbar-right">
+        <div id="zip-submit" class="hide navbar-form navbar-right">
           <div class="form-group">
             <input id="user-zip" type="text" placeholder="Enter Zip Code">
           </div>
@@ -44,7 +45,72 @@
       <h1 class="text-center header">My Saved Forecasts</h1>
       <div id="savedList"></div>
     </div>
-
+    <div id="auth">
+      <div class="hide" id="login-form">
+        <h1 class="text-center">Sign In</h1>
+        <form class="form-horizontal col-sm-4 col-sm-offset-4 col-xs-8 col-xs-offset-2">
+          <div id="signin-error" class="hide alert alert-danger" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            <span id="signin-error-msg"></span>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+            <div class="col-sm-10">
+              <input value="" type="email" class="form-control" id="inputEmail" placeholder="Email">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword" class="col-sm-2 control-label">Password</label>
+            <div class="col-sm-10">
+              <input value="" type="password" class="form-control" id="inputPassword" placeholder="Password">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <a href="#" id="go-register">Need to Register?</a>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" id="signin-btn" class="btn btn-default">Sign in</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div id="register-form">
+        <h1 class="text-center">Register</h1>
+        <form class="form-horizontal col-sm-4 col-sm-offset-4 col-xs-8 col-xs-offset-2">
+          <div id="register-error" class="hide alert alert-danger" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            <span id="register-error-msg"></span>
+          </div>
+          <div class="form-group">
+            <label for="registerEmail" class="col-sm-2 control-label">Email</label>
+            <div class="col-sm-10">
+              <input value="" type="email" class="form-control" id="registerEmail" placeholder="Email">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="registerPassword" class="col-sm-2 control-label">Password</label>
+            <div class="col-sm-10">
+              <input value="" type="password" class="form-control" id="registerPassword" placeholder="Password">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <a href="#" id="go-login">Go to Login</a>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" id="register-btn" class="btn btn-default">Register</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
