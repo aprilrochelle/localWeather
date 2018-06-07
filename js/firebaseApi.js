@@ -10,6 +10,7 @@ const setUid = (newUserId) => {
 };
 
 const saveWeatherForecast = (wxObj) => {
+  wxObj.uid = uid;
   return new Promise((resolve, reject) => {
     $.ajax({
       method: 'POST',
@@ -30,7 +31,7 @@ const getSavedWeather = () => {
     const savedWeatherArray = [];
     $.ajax({
       method: 'GET',
-      url: `${firebaseConfig.databaseURL}/weather.json`,
+      url: `${firebaseConfig.databaseURL}/weather.json?orderBy="uid"&equalTo="${uid}"`,
     })
       .done((allWeatherObj) => {
         if (allWeatherObj !== null) {
@@ -63,6 +64,7 @@ const deleteWeather = (weatherId) => {
 };
 
 const changeWeatherToScary = (updatedWx, wxId) => {
+  updatedWx.uid = uid;
   return new Promise((resolve, reject) => {
     $.ajax({
       method: 'PUT',
