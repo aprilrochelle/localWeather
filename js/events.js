@@ -23,7 +23,7 @@ const checkZip = () => {
 
 const validationEvents = () => {
   $(document).keypress((e) => {
-    if (e.key === 'Enter') {
+    if (e.key === 'Enter' && $('#auth').hasClass('hide')) {
       checkZip();
     }
   });
@@ -138,7 +138,7 @@ const authorizationEvents = () => {
 
   // $('#auth-link').click(() => {
   //   $('#auth').removeClass('hide');
-  //   $('#savedForecasts #getForecasts').addClass('hide');
+  //   $('#savedForecasts, #getForecasts').addClass('hide');
   // });
 
   $('#register-btn').click(() => {
@@ -161,6 +161,22 @@ const authorizationEvents = () => {
         $('#signin-error-msg').text(error.message);
         $('#signin-error').removeClass('hide');
         console.error(error.message);
+      });
+  });
+
+  $('#logout').click(() => {
+    firebase.auth().signOut()
+      .then(() => {
+        // Sign-out successful.
+        $('#auth').removeClass('hide');
+        $('#auth-link').removeClass('hide');
+        $('#saved-link, #logout').addClass('hide');
+        $('#zip-submit').addClass('hide');
+        $('#savedForecasts').addClass('hide');
+      })
+      .catch((error) => {
+        // An error happened.
+        console.error(error);
       });
   });
 };
