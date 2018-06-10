@@ -43,5 +43,8 @@ Current Weather by Zip
  1. In your browser navigate to: localhost:9999
  1. Type a keyword in the search bar or click a button for time of day to filter locations to avoid
 
+## Live Demo
+Check it out here: [Local Weather demo](https://localweather-aw.firebaseapp.com)
+
 ## Contributors
 [April Watson](https://github.com/aprilrochelle)
