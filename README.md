@@ -1,7 +1,7 @@
 # Local Weather
 
 ## Description
-Used API calls to retrieve data used to code a web app designed to display and forecast weather conditions by zip code. Created, read, updated and deleted data in Firebase database. Use of the following technologies:
+Used API calls to retrieve data used to code a web app designed to display and forecast weather conditions by zip code. Created, read, updated and deleted data in Firebase database and added user authentication via Firebase. Use of the following technologies:
  - HTML
  - CSS
  - JavaScript
