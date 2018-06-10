@@ -14,19 +14,22 @@ Used API calls to retrieve data used to code a web app designed to display and f
 
 ## Screenshot
 Home Screen
-![Webpage](https://raw.githubusercontent.com/aprilrochelle/localWeather/master/screens/wx2-1.png)
+![Webpage](https://raw.githubusercontent.com/aprilrochelle/localWeather/master/screens/wx3-1.png)
+
+User Login
+![Webpage](https://raw.githubusercontent.com/aprilrochelle/localWeather/master/screens/wx3-2.png)
+
+Current User's Saved Weather
+![Webpage](https://raw.githubusercontent.com/aprilrochelle/localWeather/master/screens/wx3-6.png)
 
 Current Weather by Zip
-![Webpage](https://raw.githubusercontent.com/aprilrochelle/localWeather/master/screens/wx2-2.png)
+![Webpage](https://raw.githubusercontent.com/aprilrochelle/localWeather/master/screens/wx3-3.png)
 
 3 Day Forecast
-![Webpage](https://raw.githubusercontent.com/aprilrochelle/localWeather/master/screens/wx2-3.png)
+![Webpage](https://raw.githubusercontent.com/aprilrochelle/localWeather/master/screens/wx3-4.png)
 
 5 Day Forecast
-![Webpage](https://raw.githubusercontent.com/aprilrochelle/localWeather/master/screens/wx2-4.png)
-
-Saved Weather Forecasts
-![Webpage](https://raw.githubusercontent.com/aprilrochelle/localWeather/master/screens/wx2-5.png)
+![Webpage](https://raw.githubusercontent.com/aprilrochelle/localWeather/master/screens/wx3-5.png)
 
 ## How to Run
  1. Clone down this repo, and cd into project
