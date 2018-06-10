@@ -85,6 +85,7 @@ const showSavedWeather = () => {
 const showSavedWeatherEvent = () => {
   $('#saved-link').click(() => {
     showSavedWeather();
+    $('#user-msg').addClass('hide');
   });
 };
 
@@ -135,11 +136,6 @@ const authorizationEvents = () => {
     $('#register-form').addClass('hide');
     $('#login-form').removeClass('hide');
   });
-
-  // $('#auth-link').click(() => {
-  //   $('#auth').removeClass('hide');
-  //   $('#savedForecasts, #getForecasts').addClass('hide');
-  // });
 
   $('#register-btn').click(() => {
     const email = $('#registerEmail').val();
