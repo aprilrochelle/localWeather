@@ -10,7 +10,7 @@ const checkZip = () => {
         dom.currentWeather(results, 'wxBox');
         $('#forecast').html('');
         $('#getForecasts').removeClass('hide');
-        $('#savedForecasts').addClass('hide');
+        $('#savedForecasts, #user-msg').addClass('hide');
         forecastEvents();
       })
       .catch((err) => {
@@ -75,7 +75,13 @@ const showSavedWeather = () => {
       dom.savedWxForecasts(results, 'savedList');
       $('#getForecasts').addClass('hide');
       $('#auth').addClass('hide');
-      $('#savedForecasts').removeClass('hide');
+      // if ($('#savedList').html('')) {
+      //   $('#user-msg').removeClass('hide');
+      //   $('#savedForecasts').addClass('hide');
+      // } else {
+      //   $('#user-msg').addClass('hide');
+      //   $('#savedForecasts').removeClass('hide');
+      // }
     })
     .catch((error) => {
       console.error(error);
@@ -85,7 +91,6 @@ const showSavedWeather = () => {
 const showSavedWeatherEvent = () => {
   $('#saved-link').click(() => {
     showSavedWeather();
-    $('#user-msg').addClass('hide');
   });
 };
 
