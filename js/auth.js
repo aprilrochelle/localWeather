@@ -15,7 +15,7 @@ const checkUserLoginStatus = () => {
       $('#auth').removeClass('hide');
       $('#auth-link').removeClass('hide');
       $('#saved-link, #logout').addClass('hide');
-      $('#zip-submit').addClass('hide');
+      $('#zip-submit, #user-msg').addClass('hide');
       $('#savedForecasts').addClass('hide');
     };
   });
