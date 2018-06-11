@@ -75,13 +75,13 @@ const showSavedWeather = () => {
       dom.savedWxForecasts(results, 'savedList');
       $('#getForecasts').addClass('hide');
       $('#auth').addClass('hide');
-      // if ($('#savedList').html('')) {
-      //   $('#user-msg').removeClass('hide');
-      //   $('#savedForecasts').addClass('hide');
-      // } else {
-      //   $('#user-msg').addClass('hide');
-      //   $('#savedForecasts').removeClass('hide');
-      // }
+      if (results.length === 0) {
+        $('#user-msg').removeClass('hide');
+        $('#savedForecasts').addClass('hide');
+      } else {
+        $('#user-msg').addClass('hide');
+        $('#savedForecasts').removeClass('hide');
+      }
     })
     .catch((error) => {
       console.error(error);
@@ -174,6 +174,7 @@ const authorizationEvents = () => {
         $('#saved-link, #logout').addClass('hide');
         $('#zip-submit').addClass('hide');
         $('#savedForecasts').addClass('hide');
+        $('#savedForecasts').html('');
       })
       .catch((error) => {
         // An error happened.
