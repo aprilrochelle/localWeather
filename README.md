@@ -13,11 +13,11 @@ Used API calls to retrieve data used to code a web app designed to display and f
  - Firebase
 
 ## Screenshot
-Home Screen
-![Webpage](https://raw.githubusercontent.com/aprilrochelle/localWeather/master/screens/wx3-1.png)
-
 User Login
 ![Webpage](https://raw.githubusercontent.com/aprilrochelle/localWeather/master/screens/wx3-2.png)
+
+Home Screen if User has No Saved Weather
+![Webpage](https://raw.githubusercontent.com/aprilrochelle/localWeather/master/screens/wx3-6.png)
 
 Current User's Saved Weather
 ![Webpage](https://raw.githubusercontent.com/aprilrochelle/localWeather/master/screens/wx3-6.png)
