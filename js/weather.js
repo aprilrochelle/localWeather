@@ -6,7 +6,7 @@ const setKey = (key) => {
 
 const getCurrentWeather = (zip) => {
   return new Promise((resolve, reject) => {
-    $.ajax(`http://api.openweathermap.org/data/2.5/weather?q=${zip},us&appid=${weatherKey}&units=imperial`)
+    $.ajax(`https://api.openweathermap.org/data/2.5/weather?q=${zip},us&appid=${weatherKey}&units=imperial`)
       .done((result) => {
         resolve(result);
       })
@@ -18,7 +18,7 @@ const getCurrentWeather = (zip) => {
 
 const getWxForecast = (zip) => {
   return new Promise((resolve, reject) => {
-    $.ajax(`http://api.openweathermap.org/data/2.5/forecast?zip=${zip},us&appid=${weatherKey}&units=imperial`)
+    $.ajax(`https://api.openweathermap.org/data/2.5/forecast?zip=${zip},us&appid=${weatherKey}&units=imperial`)
       .done((result) => {
         resolve(result);
       })
